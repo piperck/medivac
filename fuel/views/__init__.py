@@ -8,4 +8,4 @@ medivac = Blueprint(
     template_folder='templates',
     static_folder='static')
 
-import hello
+import fuel.views.hello

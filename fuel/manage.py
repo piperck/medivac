@@ -1,4 +1,4 @@
-from app import app
+from fuel.app import app
 from flask_script import Manager, Server
 
 manager = Manager(app)
