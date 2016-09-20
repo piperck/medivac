@@ -1,4 +1,4 @@
-from medivac import app
+from medivac.app import app
 
 
 @app.route("/")
