@@ -1,6 +1,6 @@
-from medivac.app import app
+from views import medivac
 
 
-@app.route("/")
+@medivac.route("/")
 def hello():
     return "let's move!"
