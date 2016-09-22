@@ -1,0 +1,2 @@
+class OnlineConfig(object):
+    pass
