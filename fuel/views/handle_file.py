@@ -1,12 +1,17 @@
 # coding: utf-8
 from flask import request
+from fuel.const import MaxFile
 from fuel.views import medivac
-from fuel.broker.handle_file import generate_uri
+from fuel.broker.handle_file import generate_uri_from_put
 
 
-@medivac.route("/<file_name>", method=["POST"])
+@medivac.route("/<file_name>", methods=["POST", "PUT"])
 def handle_upload_file(file_name):
-    real_file = request.files.get(file_name)
-    file_uri = generate_uri(file_name, real_file)
+    if request.method == "PUT":
+        real_file = request.get_data(as_text=True)
+        if len(real_file) > MaxFile.MAX_CONTENT_LENGTH:
+            return "Too big file, your file must less than %s byte for now :);" % MaxFile.MAX_CONTENT_LENGTH
 
-    return file_uri
+        file_uri = generate_uri_from_put(file_name, real_file)
+
+        return file_uri

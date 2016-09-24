@@ -1,4 +1,5 @@
 # coding: utf-8
+import io
 import os
 from fuel.models.file_map import FileMap
 from fuel.init_db import db_session
@@ -7,10 +8,11 @@ from fuel.init_db import db_session
 UPLOAD_FOLDER = "/home/command_center"
 
 
-def generate_uri(file_name, real_file):
+def generate_uri_from_put(file_name, real_file):
     # save file
     file_uri = os.path.join(UPLOAD_FOLDER, file_name)
-    real_file.save(file_uri)
+    with io.open(file_uri, "w", encoding="utf-8") as f:
+        f.write(real_file)
 
     # add_database
     split = file_name.rsplit(".", 1)
