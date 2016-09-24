@@ -8,5 +8,5 @@ def hello():
 
 
 @medivac.route("/<some_one>")
-def hello(some_one):
+def hello_some_one(some_one):
     return "let's move %s!" % some_one
