@@ -11,7 +11,7 @@ class User(Base):
     create_time = Column(DateTime)
     update_time = Column(DateTime)
 
-    def __init__(self, name=None, email=None):
+    def __init__(self, name, email):
         self.name = name
         self.email = email
 
