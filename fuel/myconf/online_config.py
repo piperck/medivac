@@ -1,2 +1,3 @@
 class OnlineConfig(object):
-    pass
+    # file_save_path
+    UPLOAD_FOLDER = "/home/command_center"
