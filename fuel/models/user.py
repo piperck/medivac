@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String
 from fuel.init_db import Base
+from sqlalchemy import Column, Integer, String, DateTime
 
 
 class User(Base):
@@ -8,6 +8,8 @@ class User(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False)
     email = Column(String(120), nullable=False, unique=True)
+    create_time = Column(DateTime)
+    update_time = Column(DateTime)
 
     def __init__(self, name=None, email=None):
         self.name = name
