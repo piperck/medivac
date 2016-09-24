@@ -8,8 +8,8 @@ class User(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False)
     email = Column(String(120), nullable=False, unique=True)
-    create_time = Column(DateTime)
-    update_time = Column(DateTime)
+    create_time = Column(DateTime, nullable=False)
+    update_time = Column(DateTime, nullable=False)
 
     def __init__(self, name, email):
         self.name = name

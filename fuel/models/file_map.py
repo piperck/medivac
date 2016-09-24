@@ -9,8 +9,8 @@ class FileMap(Base):
     file_name = Column(String(100), nullable=False)
     file_extension_name = Column(String(5), nullable=False)
     file_uri = Column(Text(), nullable=False)
-    create_time = Column(DateTime)
-    update_time = Column(DateTime)
+    create_time = Column(DateTime, nullable=False)
+    update_time = Column(DateTime, nullable=False)
 
     def __init__(self, file_name, file_extension_name, file_uri):
         self.file_name = file_name
