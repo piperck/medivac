@@ -7,6 +7,6 @@ def hello():
     return "let's move!"
 
 
-@medivac.route("/<some_one>")
-def hello_some_one(some_one):
-    return "let's move %s!" % some_one
+@medivac.route("/medivac")
+def hello_some_one():
+    return "let's move medivac!"

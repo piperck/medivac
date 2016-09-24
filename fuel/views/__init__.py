@@ -9,3 +9,4 @@ medivac = Blueprint(
     static_folder='static')
 
 import fuel.views.hello
+import fuel.views.handle_file

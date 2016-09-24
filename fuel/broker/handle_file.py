@@ -7,10 +7,11 @@ from fuel.init_db import db_session
 UPLOAD_FOLDER = "/home/command_center"
 
 
-def generate_uri(file_name, real_file):
+def generate_uri_from_put(file_name, real_file):
     # save file
     file_uri = os.path.join(UPLOAD_FOLDER, file_name)
-    real_file.save(file_uri)
+    with open(file_uri, 'w') as f:
+        f.write(real_file)
 
     # add_database
     split = file_name.rsplit(".", 1)
