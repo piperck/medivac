@@ -38,4 +38,14 @@ def generate_url(file_name, real_file):
     db_session.commit()
 
     file_url = "%s/%s" % (DomainName.now_domain, secret)
+
     return file_url
+
+
+def get_file_by_short_url(short_url):
+    file_maps = FileMaps.query.filter(FileMaps.short_url == short_url).first()
+
+    file_directory, file_name = file_maps.file_uri.rsplit("/", 1)
+    file_extension_name = file_maps.file_extension_name
+
+    return file_directory, file_name, file_extension_name
