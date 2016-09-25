@@ -1,5 +1,4 @@
 # coding: utf-8
-from fuel.const import DomainName
 
 
 secret_table = (
@@ -22,6 +21,4 @@ def generate_short_url(file_name_hash):
         transform_to_secret = choise_section[i * 2:i * 2 + 2]
         secret += secret_table[int(transform_to_secret, 16) % 62]
 
-    short_url = "%s/%s" % (DomainName.now_domain, secret)
-
-    return short_url
+    return secret
