@@ -26,7 +26,7 @@ def generate_url(file_name, real_file):
 
     # save file
     file_uri = os.path.join(UPLOAD_FOLDER, file_name_hash)
-    with io.open(file_uri, "w", encoding="utf-8") as f:
+    with io.open(file_uri, "wb") as f:
         f.write(real_file)
 
     # generate a short url
