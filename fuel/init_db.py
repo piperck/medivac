@@ -16,5 +16,5 @@ def init_db():
     # they will be registered properly on the metadata.  Otherwise
     # you will have to import them first before calling init_db()
     import fuel.models.user
-    import fuel.models.file_map
+    import fuel.models.file_maps
     Base.metadata.create_all(bind=engine)
