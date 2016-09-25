@@ -28,12 +28,12 @@ def generate_uri_from_put(file_name, real_file):
     with io.open(file_uri, "w", encoding="utf-8") as f:
         f.write(real_file)
 
-    # save into database
-    file_map = FileMap(file_name=file_name, file_extension_name=file_extension_name, file_uri=file_uri)
-    db_session.add(file_map)
-    db_session.commit()
-
     # generate a short url
     short_url = generate_short_url(file_name_hash)
+
+    # save into database
+    file_map = FileMap(file_name=file_name, file_extension_name=file_extension_name, file_uri=file_uri, short_url=short_url)
+    db_session.add(file_map)
+    db_session.commit()
 
     return short_url
