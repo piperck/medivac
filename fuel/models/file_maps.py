@@ -3,7 +3,7 @@ from fuel.init_db import Base
 from sqlalchemy import Column, Integer, String, DateTime, Text
 
 
-class FileMap(Base):
+class FileMaps(Base):
     __tablename__ = 'file_maps'
 
     id = Column(Integer, primary_key=True, autoincrement=True)

@@ -3,7 +3,7 @@ import io
 import os
 import uuid
 import hashlib
-from fuel.models.file_map import FileMap
+from fuel.models.file_maps import FileMaps
 from fuel.init_db import db_session
 from fuel.lib.util import generate_short_url
 from fuel.const import DomainName
@@ -33,7 +33,7 @@ def generate_url(file_name, real_file):
     secret = generate_short_url(file_name_hash)
 
     # save into database
-    file_map = FileMap(file_name=file_name, file_extension_name=file_extension_name, file_uri=file_uri, short_url=secret)
+    file_map = FileMaps(file_name=file_name, file_extension_name=file_extension_name, file_uri=file_uri, short_url=secret)
     db_session.add(file_map)
     db_session.commit()
 
