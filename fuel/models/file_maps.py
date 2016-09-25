@@ -1,10 +1,10 @@
 import datetime
 from fuel.init_db import Base
-from sqlalchemy import Column, Integer, String, DateTime, Text, Index
+from sqlalchemy import Column, Integer, String, DateTime, Text
 
 
 class FileMap(Base):
-    __tablename__ = 'file_map'
+    __tablename__ = 'file_maps'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     file_name = Column(String(100), nullable=False)
@@ -21,4 +21,4 @@ class FileMap(Base):
         self.short_url = short_url
 
     def __repr__(self):
-        return '<file_map %r>' % self.file_name
+        return '<file_maps %r>' % self.file_name
