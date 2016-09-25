@@ -3,13 +3,14 @@ import io
 import os
 import uuid
 import hashlib
+import datetime
 from fuel.models.file_maps import FileMaps
 from fuel.init_db import db_session
 from fuel.lib.util import generate_short_url
 from fuel.const import DomainName
 
 
-UPLOAD_FOLDER = "/home/command_center"
+UPLOAD_FOLDER = "/home/command_center/%s" % datetime.date.today()
 
 
 def generate_url(file_name, real_file):
@@ -25,6 +26,8 @@ def generate_url(file_name, real_file):
     file_name_hash = str(hashlib.md5(x).hexdigest())
 
     # save file
+    if not os.path.exists(UPLOAD_FOLDER):
+        os.mkdir(UPLOAD_FOLDER)
     file_uri = os.path.join(UPLOAD_FOLDER, file_name_hash)
     with io.open(file_uri, "wb") as f:
         f.write(real_file)
