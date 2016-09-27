@@ -10,7 +10,7 @@ from fuel.lib.util import generate_short_url
 from fuel.const import DomainName
 
 
-UPLOAD_FOLDER = "/home/medivac/command_center%s" % datetime.date.today()
+UPLOAD_FOLDER = "/home/medivac/command_center/%s/" % datetime.date.today()
 
 
 def generate_url(file_name, real_file):
