@@ -11,7 +11,9 @@ def handle_upload_file(file_name):
     if len(real_file) > MaxFile.MAX_CONTENT_LENGTH:
         return "Too big file, your file must less than %s byte for now :);" % MaxFile.MAX_CONTENT_LENGTH
 
-    return generate_url(file_name, real_file)
+    url = generate_url(file_name, real_file)+'\n'
+
+    return url
 
 
 @medivac.route("/<short_url>", methods=["GET"])
