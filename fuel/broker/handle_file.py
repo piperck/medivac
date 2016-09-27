@@ -3,15 +3,10 @@ import io
 import os
 import uuid
 import hashlib
-import datetime
 from fuel.models.file_maps import FileMaps
 from fuel.init_db import db_session
 from fuel.lib.util import generate_short_url
-from fuel.const import DomainName
-from fuel.app import logger
-
-
-UPLOAD_FOLDER = "/home/medivac/command_center/%s/" % datetime.date.today()
+from fuel.myconf.online_config import logger, UPLOAD_FOLDER, DOMAIN_NAME
 
 
 def generate_url(file_name, real_file):
@@ -41,7 +36,7 @@ def generate_url(file_name, real_file):
     db_session.add(file_map)
     db_session.commit()
 
-    file_url = "%s/%s" % (DomainName.now_domain, secret)
+    file_url = "%s/%s" % (DOMAIN_NAME, secret)
     logger.info("upload file. file_name: {0}, file_uri: {1}, file_extension_name: {2}".format(file_name, file_uri, file_extension_name))
 
     return file_url
