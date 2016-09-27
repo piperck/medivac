@@ -3,6 +3,7 @@ from flask import request, send_from_directory
 from fuel.myconf.online_config import MAX_CONTENT_LENGTH
 from fuel.views import medivac
 from fuel.broker.handle_file import generate_url, get_file_by_short_url
+from fuel.exception import NotFindUrl
 
 
 @medivac.route("/<file_name>", methods=["PUT"])
@@ -18,15 +19,18 @@ def handle_upload_file(file_name):
 
 @medivac.route("/<short_url>", methods=["GET"])
 def get_file(short_url):
-    if not short_url:
-        return ''
-
     try:
+        if not short_url or str(short_url) == "favicon.ico":
+            raise ValueError
         short_url = str(short_url)
     except (ValueError, TypeError):
         return "What are you doing?....."
 
-    file_directory, file_name, file_extension_name = get_file_by_short_url(short_url)
+    try:
+        file_directory, file_name, file_extension_name = get_file_by_short_url(short_url)
+    except NotFindUrl:
+        return "Can not find this resource."
+
     complete_file_name = "%s.%s" % (file_name, file_extension_name)
 
     return send_from_directory(file_directory, file_name, as_attachment=True, attachment_filename=complete_file_name)

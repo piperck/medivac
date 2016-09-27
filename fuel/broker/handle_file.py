@@ -7,6 +7,7 @@ from fuel.models.file_maps import FileMaps
 from fuel.init_db import db_session
 from fuel.lib.util import generate_short_url
 from fuel.myconf.online_config import logger, UPLOAD_FOLDER, DOMAIN_NAME
+from fuel.exception import NotFindUrl
 
 
 def generate_url(file_name, real_file):
@@ -37,7 +38,7 @@ def generate_url(file_name, real_file):
     db_session.commit()
 
     file_url = "%s/%s" % (DOMAIN_NAME, secret)
-    logger.info("upload file. file_name: {0}, file_uri: {1}, file_extension_name: {2}".format(file_name, file_uri, file_extension_name))
+    logger.info("Upload file. file_name: {0}, file_uri: {1}, file_extension_name: {2}".format(file_name, file_uri, file_extension_name))
 
     return file_url
 
@@ -45,8 +46,12 @@ def generate_url(file_name, real_file):
 def get_file_by_short_url(short_url):
     file_maps = FileMaps.query.filter(FileMaps.short_url == short_url).first()
 
+    if not file_maps:
+        logger.error("File_maps is None. short_url: {0}".format(short_url))
+        raise NotFindUrl
+
     file_directory, file_name = file_maps.file_uri.rsplit("/", 1)
     file_extension_name = file_maps.file_extension_name
-    logger.info("get file. file_directory: {0}, file_hash: {1}, file_extension_name: {2}".format(file_name, file_name, file_extension_name))
+    logger.info("Get file. file_directory: {0}, file_hash: {1}, file_extension_name: {2}".format(file_name, file_name, file_extension_name))
 
     return file_directory, file_name, file_extension_name
