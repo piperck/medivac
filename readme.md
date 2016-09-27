@@ -1,10 +1,10 @@
 # Medivac(BETA)
 Easy and fast to build your own file sharing system.
 One upload use anywhere.
-Now I recommend you using my server. Set up your own medivac will be watting a moment.
+Now I recommend you using my server. Set up your own medivac will be waiting for later.
 
 # How to use it?
-![](http://s2.cdn.xiachufang.com/e346200e832d11e6b87c0242ac110003_875w_249h.gif)
+![](http://s2.cdn.xiachufang.com/109b1638848f11e6b87c0242ac110003_875w_249h.gif)
 
 
 ###upload file
