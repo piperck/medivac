@@ -29,7 +29,7 @@ class BaseLogger(object):
         self.logger = logging.getLogger(name)
         self.level = logging.INFO
 
-    def gen_sc2_logger(self):
+    def gen_medivac_logger(self):
         # set produce log level
         self.logger.setLevel(self.level)
 
