@@ -8,6 +8,7 @@ app = Flask(__name__)
 # add blue_print
 app.register_blueprint(medivac)
 
+
 # the request en gone away auto shutdown SQLAlchemy connect
 @app.teardown_appcontext
 def shutdown_session(exception=None):

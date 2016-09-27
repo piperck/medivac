@@ -1,0 +1,2 @@
+class NotFindUrl(Exception):
+    pass
