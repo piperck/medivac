@@ -18,6 +18,9 @@ def handle_upload_file(file_name):
 
 @medivac.route("/<short_url>", methods=["GET"])
 def get_file(short_url):
+    if not short_url:
+        return ''
+
     try:
         short_url = str(short_url)
     except (ValueError, TypeError):
